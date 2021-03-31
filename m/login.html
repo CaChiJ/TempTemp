@@ -1,0 +1,56 @@
+<meta charset="utf-8">
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <meta name="robots" content="noindex">
+    <title>템템 - 로그인</title>
+</head>
+<body>    
+    <div class="m_sign">
+        로그인
+    </div>
+    
+    <div style="margin-bottom:6rem;">  </div>
+    
+    <form method="post" action="/login.php">
+        <div style="display:flex; justify-content:center;">
+            <div style="font-size: 1.5rem; margin:0rem 3.2rem 0rem 0rem;"> 아이디 </div>
+            <input name="id" style="width:50%;" id='id'/>
+        </div>
+        
+        <div style="margin:2rem;"> </div>
+        
+        <div style="display:flex; justify-content:center;">
+            <div style="font-size: 1.5rem; margin:0rem 2rem 0rem 0rem;">비밀번호</div>
+            <input type="password" name="pw" style="width:50%;" id='pw'/>
+        </div>
+        
+        <div style="height:20%;"> </div>
+        
+        <div style="display:flex; justify-content:center;">
+            <div style="width:13%;"> </div>
+            <div style="text-align:center;">
+                <button class="m_a_button" name="m_login" id='login'>로그인</button>
+            </div>
+            <div style="width:5%;"> </div>
+            <div style="text-align:center;">
+                <button class="m_a_button" name="m_join_page">회원가입</button>
+            </div>
+            <div style="width:13%;"> </div>
+        </div>
+    </form>
+<script>
+    if (window.sessionStorage) {
+       var id = sessionStorage.getItem('login');
+
+       if(id == "S"){
+          location.href = "./main.php";
+       }
+        else if(id == "T"){
+          location.href = "./teacher.php";
+       }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<meta charset="utf-8">
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="noindex">
+    <title>템템 - 회원가입</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="image/server/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="image/server/favicon.ico" type="image/x-icon">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>  
+    <div class="sign" style="margin-top:5.3rem; font-size:6.5rem">
+        회원가입
+    </div>
+    
+    <div class="container body-content" style = "margin-top:-5rem;" style="display:flex;">
+    <form method="post" action="/login.php">
+      <div class="container">
+        <div class="row justify-content-start" style="padding-top:10px;">
+          <div class="col" style="padding-top:10px;">
+            성함
+          </div>
+          <div class="col" style="padding-top:10px;">
+            <input class="form-control" name="name" placeholder="성함을 입력해주세요."></input>
+          </div>
+        </div>
+        <div class="row justify-content-start" style="padding-top:10px;">
+          <div class="col" style="padding-top:10px;">
+            <label>아이디</label>
+          </div>
+          <div class="col" style="padding-top:10px;">
+            <input class="form-control" name="id" placeholder="7자리 이상으로 입력해주세요." maxlength="20" oninput="numberMaxLength(this);"></input>
+          </div>
+        </div>
+        <div class="row justify-content-start" style="padding-top:10px;">
+          <div class="col" style="padding-top:10px;">
+            <label>비밀번호</label>
+          </div>
+          <div class="col" style="padding-top:10px;">
+            <input class="form-control" type="password" name="pw" placeholder="8자리 이상으로 입력해주세요." maxlength="20" oninput="numberMaxLength(this);"></input>
+          </div>
+        </div>
+        <div class="row justify-content-start" style="padding-top:10px;">
+          <div class="col" style="padding-top:10px;">
+            <label>비밀번호 확인</label>
+          </div>
+          <div class="col" style="padding-top:10px;">
+            <input class="form-control" type="password" name="pwConfirm" placeholder="비밀번호를 다시 입력해주세요." maxlength="20" oninput="numberMaxLength(this);"></input>
+          </div>
+        </div>
+        <div class="row justify-content-start" style="padding-top:10px;">
+          <div class="col" style="padding-top:10px;">
+            <label>가입 유형</label>
+          </div>
+          <div class="col" style="padding-top:10px;">
+            <label><input type="radio" name="type" value="student" name="student" onclick="div_on();" checked>일반</label>
+            <label><input type="radio" name="type" value="teacher" name="teacher" onclick="div_off();" style="margin-left:10px;">관리자</label>
+          </div>
+        </div>
+        <div id="number" class="row justify-content-start" style="padding-top:10px;">
+          <div class="col" style="padding-top:10px;">
+            <label>사용 확인 코드</label>
+          </div>
+          <div class="col" style="padding-top:10px;">
+            <input class="form-control" name="num" placeholder="관리자에게 제공받은 7자리 코드"  maxlength="7" oninput="numberMaxLength(this);"></input>
+          </div>
+        </div>
+      <script>
+        function div_on(){
+            document.getElementById("number").style.display = "";
+            document.getElementById("lb").style.marginTop = "0rem";
+        }
+        function div_off(){
+            document.getElementById("number").style.display = "none";
+            document.getElementById("lb").style.marginTop = "3.6rem";
+        }
+        function numberMaxLength(e){
+            if(e.value.length > e.maxLength){
+                e.value = e.value.slice(0, e.maxLength);
+            }
+        }
+      </script>
+        <div class="row justify-content-start" style="padding-top:10px;">
+          <div class="col" style="padding-top:10px;">
+              <label><a href="terms.html" target="_blank"><ins>&lt;약관&gt;</ins></a> 동의 여부</label>
+          </div>
+          <div class="col" style="padding-top:10px;">
+            <label><input type="checkbox" name="agree" value="agree" name="agree"><a href="terms.html" target="_blank"><ins>&lt;약관&gt;</ins></a>을 모두 숙지하였으며, 이에 동의합니다.</label>
+          </div>
+        </div>
+        <br/>
+        <div class="g-recaptcha" data-sitekey="6LcSLfcUAAAAAP3pkgvxp57aMnbR_wT3I0F9ah2W" style="display: table; margin-left: auto; margin-right: auto;" id="lb"></div>
+        <div class="row justify-content-start" >
+          <div class="col" style="padding-top:20px; text-align : center;">
+            <button class="a_button" style="font-size: 20px;" name="login_page">이전</button>
+            <button class="a_button" style="font-size: 20px;" name="join">완료</button>
+          </div>
+        </div>
+      </div>
+    </form>
+    </div>
+ <script>
+    if (window.sessionStorage) {
+       var id = sessionStorage.getItem('login');
+
+       if(id == "S"){
+          location.href = "main.php";
+       }
+        else if(id == "T"){
+          location.href = "teacher.php";
+       }
+    }
+</script>
+</body>
+</html>
